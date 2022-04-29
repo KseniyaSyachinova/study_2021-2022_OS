@@ -1,0 +1,147 @@
+---
+## Front matter
+title: "Отчёт по первому этапу проекта"
+subtitle: "Операционные системы"
+author: "Сячинова Ксения"
+
+## Generic otions
+lang: ru-RU
+toc-title: "Содержание"
+
+## Bibliography
+bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
+
+## Pdf output format
+toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt
+## I18n polyglossia
+polyglossia-lang:
+  name: russian
+  options:
+	- spelling=modern
+	- babelshorthands=true
+polyglossia-otherlangs:
+  name: english
+## I18n babel
+babel-lang: russian
+babel-otherlangs: english
+## Fonts
+mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+mainfontoptions: Ligatures=TeX
+romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
+monofontoptions: Scale=MatchLowercase,Scale=0.9
+## Biblatex
+biblatex: true
+biblio-style: "gost-numeric"
+biblatexoptions:
+  - parentracker=true
+  - backend=biber
+  - hyperref=auto
+  - language=auto
+  - autolang=other*
+  - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization
+figureTitle: "Рис."
+tableTitle: "Таблица"
+listingTitle: "Листинг"
+lofTitle: "Список иллюстраций"
+lotTitle: "Список таблиц"
+lolTitle: "Листинги"
+## Misc options
+indent: true
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{float} # keep figures where there are in the text
+  - \floatplacement{figure}{H} # keep figures where there are in the text
+---
+
+# Цель работы
+Размещение на Github pages заготовки для персонального сайта.
+
+# Задание
+
+- Установить необходимое программное обеспечение.
+- Скачать шаблон темы сайта.
+- Разместить его на хостинге git.
+- Установить параметр для URLs сайта.
+- Разместить заготовку сайта на Github pages.
+
+# Выполнение лабораторной работы
+1. Скачиваем исполняемый файл Hugo для генерации страниц сайта.Переходим по ссылке и скачиваем последнюю версию сайта. Для работы в компьютерном классе на нашу операционную истему  мы вибираем файл
+`hugo_extended_0.98.0_Linux-64bit.tar.gz `.(рис. [-@fig:001])(рис. [-@fig:002])
+
+![Скачивание файла](image/1.png){ #fig:001 width=70% }
+
+![Выбор для операционной системы](image/2.png){ #fig:002 width=70% }
+
+2. Затем извлекаем текущую папку из архива. Вырезаем исполняемый файл hugo в папку bin, предварительно создав её в домашней папке. Затем переходим в Konsole.
+
+3. Далее сделаем клон репозитория. Для этого сначала создаём его, я назвала мой репозиторий "Project". После этого копируем ссылку и с помощью команды `git clone --recursive` создаём копию.(рис. [-@fig:003])
+
+![Копия репозитория](image/3.png){ #fig:003 width=70% }
+
+4. Переходим в "Prijects". С помощью команды `ls -l` видим наши файлы. После этого выполняем команду ~/big/hugo обязательно ставим знак тильды, так как мы переходим в каталог пользователя. Удалим папку public для упрощения работы.(рис. [-@fig:004])
+
+![Переход в папку](image/4.png){ #fig:004 width=70% }
+
+5. Используем команду ~/bin/hugo server и при правильном выполнении мы видим ссылку на наш сайт. Копируем и вставляем в браузер. При выполнении данной команды мы автоматически создали файлы. Этот сайт виден только нам. (рис. [-@fig:005])
+
+![Создания сайта](image/5.png){ #fig:005 width=70% }
+
+6. Уберём зелёное поле, которое сейчас находится на нашем сайте. Для этого нужно удалить одну папку. Пусть к этой папке прописан на сайте: `content/home/demo.mg`. После удаления видим исчёзновение зеленого фона. (рис. [-@fig:006]), (рис. [-@fig:007])
+
+![Удаление файла](image/6.png){ #fig:006 width=70% }
+
+![Итог](image/7.png){ #fig:007 width=70% }
+
+7. Теперь переносим сайт на репозиторий. Для этого создаём ещё один репозиторий с определённым именем. В моём случае это `KseniyaSyachinova.github.io` (рис. [-@fig:008])
+
+![Создание репозитория](image/8.png){ #fig:008 width=70% }
+
+8. После создания репозитория переходим в консоль, поднимаемся на уровень выше и рядом с ним клонируем наш созданный репозиторий. Проверяем с помощью команды `ls`.(рис. [-@fig:009])
+
+![Клонирование нового репозитория](image/9.png){ #fig:009 width=70% }
+
+9. Переходим в репозиторий, создаёт ветку main с помощью команды `git checkout -b main`, создаём пустой файл для активации репозитория, добовляем его с помощью знакомых действий.(рис. [-@fig:010])
+
+![Создание ветки main](image/10.png){ #fig:010 width=70% }
+
+10. Переходим в наш Project и теперь подключаем репозиторий к папке public внутри нашего блока для эффективной регенирации страниц нашего сайта. Для этого используем команду `git submodule add -b main git@github.com:KseniyaSyachinova/KseniyaSyachinova.github.io.git public`. Подключаем обратно наш publiс. Комментируем его #public и проверяем. Опять используем нашу команду и видим изменения. рис. [-@fig:011])
+
+![Поключение к public](image/11.png){ #fig:011 width=70% }
+
+11. С помощью ~/bin/hugo мы автоматически добавляем файлы в нашу папку, которые в будущем будут являтся файлами нашего сайта.(рис. [-@fig:012])
+
+![Автоматическое подключение](image/12.png){ #fig:012 width=70% }
+
+12. Синхронизируем эти файлы с репозиторием. Возвращаемся в public, для проверки делаем `git remote -v`. (рис. [-@fig:013]), (рис. [-@fig:014]), 
+
+![Синхронизация](image/13.png){ #fig:013 width=70% }
+
+![Синхронизация](image/14.png){ #fig:014 width=70% }
+
+13. Обовляем наш репозиторий и видим все файлы. Копируем ссылку, вставляем в браузер и видим наш новый сайт. На это первый этап закончен. (рис. [-@fig:015]), (рис. [-@fig:016]), 
+
+![Синхронизация](image/15.png){ #fig:015 width=70% }
+
+![Синхронизация](image/16.png){ #fig:016 width=70% }
+
+# Выводы
+После выполнения первго этапа проекта я научилась: 
+
+- Устанавливать необходимое программное обеспечение.
+- Скачивать шаблон темы сайта.
+- Размещать его на хостинге git.
+- Установливать параметр для URLs сайта.
+- Размещать заготовку сайта на Github pages.
