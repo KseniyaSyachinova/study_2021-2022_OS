@@ -72,7 +72,6 @@ header-includes:
 
 # Задание
 
-
  Зарегистрироваться на соответствующих ресурсах и разместить на них ссылки на сайте:
 -  eLibrary : https://elibrary.ru/;
 -        Google Scholar : https://scholar.google.com/;
